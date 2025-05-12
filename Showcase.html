@@ -8,78 +8,96 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Nav -->
-    <nav>
-      <ul>
-        <a href="#cards">cards</a>
-      </ul>
-      <ul>
-        <a href="#link2">link2</a>
-      </ul>
-      <ul>
-        <a href="#link1">link3</a>
-      </ul>
-    </nav>
-    <!-- cards -->
-    <section id="cards">
-      <div class="card">
-        <h2>Card 1</h2>
-        <img
-          class="img"
-          src="https://placecats.com/neo/100/100"
-          width="200"
-          height="200"
-          alt="Picture of a cat"
-        />
-        <p>
-          Cat ipsum dolor sit amet, dicta and error amet so excepteur. Dolores.
-          Duis ad natus. Ut iste totam. Aliquip vitae consequatur. Ipsa aliquid.
-          Commodo veritatis rem so error but reprehenderit. Adipisicing unde yet
-          deserunt molestiae. Quia error, odit yet ea consequatur, but proident.
-          Nulla. Ex consequatur for inventore but qui yet dicta. Velit do and
-          consectetur doloremque.
-        </p>
-        <button type="button">Click Me!</button>
-      </div>
-      <div class="card">
-        <h2>Card 2</h2>
-        <img
-          class="img"
-          src="https://placecats.com/millie/100/100"
-          width="200"
-          height="200"
-          alt="Picture of a cat"
-        />
-        <p>
-          Cat ipsum dolor sit amet, dicta and error amet so excepteur. Dolores.
-          Duis ad natus. Ut iste totam. Aliquip vitae consequatur. Ipsa aliquid.
-          Commodo veritatis rem so error but reprehenderit. Adipisicing unde yet
-          deserunt molestiae. Quia error, odit yet ea consequatur, but proident.
-          Nulla. Ex consequatur for inventore but qui yet dicta. Velit do and
-          consectetur doloremque.
-        </p>
-        <button type="button">Click Me!</button>
-      </div>
-      <div class="card">
-        <h2>Card 3</h2>
-        <img
-          class="img"
-          src="https://placecats.com/neo_banana/100/100"
-          width="200"
-          height="200"
-          alt="Picture of a cat"
-        />
-        <p>
-          Cat ipsum dolor sit amet, dicta and error amet so excepteur. Dolores.
-          Duis ad natus. Ut iste totam. Aliquip vitae consequatur. Ipsa aliquid.
-          Commodo veritatis rem so error but reprehenderit. Adipisicing unde yet
-          deserunt molestiae. Quia error, odit yet ea consequatur, but proident.
-          Nulla. Ex consequatur for inventore but qui yet dicta. Velit do and
-          consectetur doloremque.
-        </p>
-        <button type="button">Click Me!</button>
-      </div>
+    <!-- Header -->
+    <header>
+      <h1>Spreading Awareness for Local Differential Privacy (LDP)</h1>
+      <p>By Westley T and Hong</p>
+    </header>
+
+    <!-- Intro section -->
+    <section>
+      <h2>A Brief Introduction</h2>
+      <p>
+        Differential privacy (DP) is a technique for preserving individual
+        privacy. It does this by adding controllable noise to the data so that
+        one person's data does not change the output significantly, making it
+        harder for attackers to gain information.
+      </p>
+      <p>
+        Central differential privacy is a type of DP that is already widely
+        used, Its application is mostly on the server/host/creator side with raw
+        data. Local differential privacy (LDP) on the other hand, is less common
+        and could provide more privacy if it was widely adapted more. LDP is
+        applied on the client side before reaching the server, ensuring the data
+        given is "accurate" enough to be useful while also preserving some
+        privacy.
+      </p>
+      <p>
+        The goal of this website is to spread awareness of LDP with a detailed
+        showcase with the hopes that it gets adapted more in practical
+        scenarios. We'll first start with raw data, add noise to it, and then
+        send it to the server for analysis. The showcase source can be found and
+        ran at our
+        <a href="https://github.com/WTPSU/CS-Privacy-Aware-Project">
+          repo on Github.
+        </a>
+      </p>
     </section>
-    <!-- table -->
+
+    <!-- numbers showcase section -->
+    <section>
+      <h2>The showcase</h2>
+      <p>
+        We'll first start with showcasing something simple, like numbers. We can
+        pretend that we're working with a dataset with user's ages. Since Age is
+        a whole number and usually within range of 1-100, our simulated data
+        will use this fact:
+      </p>
+      <img
+        src="../images/1 SimulatedData.png"
+        alt="Using a for loop to add random numbers from 1-99."
+      />
+      <p>
+        Next we setup a simple socket for client/server communication and a
+        output window it's easier to tell what the server sees. When the server
+        receives data from the client, it'll output analysis data (Range,
+        Median, and Mode) on the dataset of numbers.
+      </p>
+      <img src="../images/2 ServerOut.png" alt="Server Output window" />
+      <p>
+        Now onto the client, The basic idea is that raw data is given, noise is
+        added using the Laplace mechanism as DP and is then sent to the server.
+        We wanted the demo to be a bit interactive, so we let the client specify
+        the epsilon value. After setting up the client socket, we ask for an
+        epsilon value and loop for raw data input.
+      </p>
+      <img
+        src="../images/3 Client CLI.png"
+        alt="CLI client with example numbers for epsilon and data"
+      />
+      <p>And here is the laplace function:</p>
+      <img src="../images/4 LaplaceCall.png" alt="Laplace function call" />
+      <img src="../images/5 LaplaceFunct.png" alt="Laplace function" />
+      <p>
+        Our sensitivy is 99 here because it's the maximum the data can change by
+        (accounts for worst-case). Age is usually also a whole number so we
+        round the final result with int().
+      </p>
+      <p>
+        After adding noise, the data is sent to the server and the server demo
+        will update it's analysis;
+      </p>
+      <img src="../images/6 Running Demo.png" alt="client/server demo" />
+      <p>
+        With enough data-points, the server will have a pretty accurate measure
+        of the shape and distribution of the data. As an example, here's the
+        result of running the same epsilon = 2 and data = 24 500+ times, It gets
+        closer to 24 with each new data-point;
+      </p>
+      <img
+        src="../images/7 Running e2 a24 500 times.png"
+        alt="client/server demo"
+      />
+    </section>
   </body>
 </html>

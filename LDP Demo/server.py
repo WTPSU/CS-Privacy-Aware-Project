@@ -7,7 +7,7 @@ import random
 serverData = []
 
 #random starting data
-for i in range(1,100):
+for i in range(0,100):
     serverData.append(random.randrange(1,99))
 
 def main():

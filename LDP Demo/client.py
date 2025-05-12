@@ -14,11 +14,11 @@ def main():
     clientSocket.connect((host, port))
 
     #input/noise
+    epsilonInput = float(input("Enter the epsilon, (lower = +privacy -accuracy) and (higher = -privacy +accuracy)\n> "))
     dataInput = input("Enter some data (q to quit)\nNumbers only for now, Pretend that this number is something like someone's age (1-100).\n> ")
 
     while dataInput != "q":
         dataInput = int(dataInput)
-        epsilonInput = float(input("Enter the epsilon, (lower = +privacy -accuracy) and (higher = -privacy +accuracy)\n> "))
         noiseData = laplace_num(dataInput,99,epsilonInput,1,100)
         noiseData = int(noiseData)# age usually isn't a decimal value.
 
