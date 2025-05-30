@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>02 - Webpage</title>
+    <title>Priv. Aware Website Project</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -22,17 +22,22 @@
         privacy. It does this by adding controllable noise to the data so that
         one person's data does not change the output significantly, making it
         harder for attackers to gain information.
-      </p>
-      <p>
+        <br />
+        <br />
         Central differential privacy is a type of DP that is already widely
         used, Its application is mostly on the server/host/creator side with raw
-        data. Local differential privacy (LDP) on the other hand, is less common
-        and could provide more privacy if it was widely adapted more. LDP is
-        applied on the client side before reaching the server, ensuring the data
-        given is "accurate" enough to be useful while also preserving some
-        privacy.
-      </p>
-      <p>
+        data. For example, after data is collected from clients, DP is applied
+        to ensure that the data is good and privacy-preserved for internal and
+        external use.
+        <br />
+        <br />
+        Local differential privacy (LDP) on the other hand, is less common and
+        could provide more privacy for everyone overall if it was widely adapted
+        more. LDP is applied on the client side before reaching the server,
+        ensuring the data given is "accurate" enough to be useful while also
+        preserving some privacy.
+        <br />
+        <br />
         The goal of this website is to spread awareness of LDP with a detailed
         showcase with the hopes that it gets adapted more in practical
         scenarios. We'll first start with raw data, add noise to it, and then
@@ -46,64 +51,70 @@
 
     <!-- numbers showcase section -->
     <section>
-      <h2>The showcase</h2>
+      <h2>Showcase #1 - Laplace + Numbers</h2>
       <p>
         We'll first start with showcasing something simple, like numbers. We can
         pretend that we're working with a dataset with user's ages. Since Age is
         a whole number and usually within range of 1-100, our simulated data
         will use this fact:
-      </p>
-      <img
-        src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/1 SimulatedData.png"
-        alt="Using a for loop to add random numbers from 1-99."
-      />
-      <p>
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/1 SimulatedData.png"
+          alt="Using a for loop to add random numbers from 1-99."
+        />
+
         Next we setup a simple socket for client/server communication and a
         output window it's easier to tell what the server sees. When the server
         receives data from the client, it'll output analysis data (Range,
         Median, and Mode) on the dataset of numbers.
-      </p>
-      <img src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
-2 ServerOut.png" alt="Server Output window" />
-      <p>
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+2 ServerOut.png"
+          alt="Server Output window"
+        />
+
         Now onto the client, The basic idea is that raw data is given, noise is
         added using the Laplace mechanism as DP and is then sent to the server.
         We wanted the demo to be a bit interactive, so we let the client specify
         the epsilon value. After setting up the client socket, we ask for an
         epsilon value and loop for raw data input.
-      </p>
-      <img
-        src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
 3 Client CLI.png"
-        alt="CLI client with example numbers for epsilon and data"
-      />
-      <p>And here is the laplace function:</p>
-      <img src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
-4 LaplaceCall.png" alt="Laplace function call" />
-      <img src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
-5 LaplaceFunct.png" alt="Laplace function" />
-      <p>
+          alt="CLI client with example numbers for epsilon and data"
+        />
+
+        And here is the laplace function:
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+4 LaplaceCall.png"
+          alt="Laplace function call"
+        />
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+5 LaplaceFunct.png"
+          alt="Laplace function body"
+        />
+
         Our sensitivy is 99 here because it's the maximum the data can change by
         (accounts for worst-case). Age is usually also a whole number so we
-        round the final result with int().
-      </p>
-      <p>
-        After adding noise, the data is sent to the server and the server demo
-        will update it's analysis;
-      </p>
-      <img src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
-6 Running Demo.png" alt="client/server demo" />
-      <p>
+        round the final result with int(). After adding noise, the data is sent
+        to the server and the server demo will update it's analysis;
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+6 Running Demo.png"
+          alt="client/server demo"
+        />
+
         With enough data-points, the server will have a pretty accurate measure
         of the shape and distribution of the data. As an example, here's the
         result of running the same epsilon = 2 and data = 24 500+ times, It gets
         closer to 24 with each new data-point;
-      </p>
-      <img
-        src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
 7 Running e2 a24 500 times.png"
-        alt="client/server demo"
-      />
+          alt="server log after 500+ runs"
+        />
+      </p>
     </section>
   </body>
 </html>
