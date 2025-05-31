@@ -16,7 +16,7 @@
 
     <!-- Intro section -->
     <section>
-      <h2>A Brief Introduction</h2>
+      <h2>Introduction</h2>
       <p>
         Differential privacy (DP) is a technique for preserving individual
         privacy. It does this by adding controllable noise to the data so that
@@ -25,24 +25,35 @@
         <br />
         <br />
         Central differential privacy is a type of DP that is already widely
-        used, Its application is mostly on the server/host/creator side with raw
-        data. For example, after data is collected from clients, DP is applied
-        to ensure that the data is good and privacy-preserved for internal and
-        external use.
+        used, its application is mostly on the server/host/creator side with raw
+        data. For example, after raw data is collected from clients, DP is
+        applied to ensure that the data is good and privacy-preserved for
+        internal and external use.
         <br />
         <br />
-        Local differential privacy (LDP) on the other hand, is less common and
-        could provide more privacy for everyone overall if it was widely adapted
-        more. LDP is applied on the client side before reaching the server,
-        ensuring the data given is "accurate" enough to be useful while also
-        preserving some privacy.
+        Local differential privacy (LDP) on the other hand, is less common. LDP
+        is applied on the client side before reaching the server, ensuring the
+        data given is "accurate" enough to be useful while also preserving some
+        privacy. For example, instead of the data being sent directly to the
+        server, noise is added before it does, ensuring that individual privacy
+        is preserved when it is used by a third party.
         <br />
         <br />
-        The goal of this website is to spread awareness of LDP with a detailed
-        showcase with the hopes that it gets adapted more in practical
-        scenarios. We'll first start with raw data, add noise to it, and then
-        send it to the server for analysis. The showcase source can be found and
-        ran at our
+        LDP could provide more privacy for everyone if it was adapted more.
+        Since it is applied on the client before data is sent to servers, no raw
+        data is collected by a 3rd party. When things like data-breaches happen,
+        individual privacy is preserved, and it will be harder for attackers to
+        isolate a single person's data. The trade-off for using LDP is accuracy,
+        but it might be worth it if everyone's privacy is preserved.
+        <br />
+        <br />
+        The goal of this website is to spread awareness towards LDP with a
+        detailed showcase with the hopes that it gets adapted more in practical
+        scenarios, leading to more privacy for everyone overall.
+        <br />
+        <br />
+
+        The showcase source(s) can be found and ran at our
         <a href="https://github.com/WTPSU/CS-Privacy-Aware-Project">
           repo on Github.
         </a>
@@ -53,10 +64,11 @@
     <section>
       <h2>Showcase #1 - Laplace + Numbers</h2>
       <p>
-        We'll first start with showcasing something simple, like numbers. We can
-        pretend that we're working with a dataset with user's ages. Since Age is
-        a whole number and usually within range of 1-100, our simulated data
-        will use this fact:
+        For the first showcase, we'll cover something simple. We start with raw
+        numbers, add noise to it, and then send it to the server for analysis.
+        We can pretend that we're working with a dataset of user's ages. Since
+        Age is a whole number and usually within range of 1-100, our simulated
+        data will use this fact:
         <img
           src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/1 SimulatedData.png"
           alt="Using a for loop to add random numbers from 1-99."
@@ -115,6 +127,16 @@
           alt="server log after 500+ runs"
         />
       </p>
+    </section>
+
+    <!-- showcase 2 section -->
+    <section>
+      <h2>Showcase #2 - WIP</h2>
+    </section>
+
+    <!-- showcase 2 section -->
+    <section>
+      <h2>Conclusion(?)</h2>
     </section>
   </body>
 </html>
