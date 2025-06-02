@@ -1,5 +1,6 @@
 import socket
 import numpy as np
+import time
 
 def main():
     #intro text
@@ -15,20 +16,25 @@ def main():
 
     #input/noise
     epsilonInput = float(input("Enter the epsilon, (lower = +privacy -accuracy) and (higher = -privacy +accuracy)\n> "))
+    repeatCount = input("Enter The times to repeat:\n> ")
+
     dataInput = input("Enter some data (q to quit)\nNumbers only for now, Pretend that this number is something like someone's age (1-100).\n> ")
 
     while dataInput != "q":
-        dataInput = int(dataInput)
-        noiseData = laplace_num(dataInput,99,epsilonInput,1,100)
-        noiseData = int(noiseData)# age usually isn't a decimal value.
+        for i in range(1,int(repeatCount)):
+            dataInput = int(dataInput)
+            noiseData = laplace_num(dataInput,99,epsilonInput,1,100)
+            noiseData = int(noiseData)# age usually isn't a decimal value.
 
-        print("\nReal Value:",dataInput)
-        print("Data w/Noise:", noiseData, " <- This will be sent to server.")
-        print("Data sent.\n")
+            print("\nReal Value:",dataInput)
+            print("Data w/Noise:", noiseData, " <- This will be sent to server.")
+            print("Data sent.")
 
-        #send
-        clientSocket.send(str(noiseData).encode())  # send message
-        dataInput = input("Enter some data (q to quit)\n> ")
+            #send
+            clientSocket.send(str(noiseData).encode())  # send message
+            time.sleep(0.03)
+
+        dataInput = input("\nEnter some data (q to quit)\n> ")
 
     # close the connection
     clientSocket.close()

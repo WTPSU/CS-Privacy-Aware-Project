@@ -1,10 +1,13 @@
-import socket
-import tkinter as tk
-import threading
 from statistics import median, mode
+import matplotlib.pyplot as plt
+import numpy as np
+import tkinter as tk
+import socket
+import threading
 import random
 
 serverData = []
+fig = None
 
 #random starting data
 for i in range(0,100):
@@ -34,6 +37,10 @@ def main():
     button_frame = tk.Frame(root)
     button_frame.pack(pady=5)
 
+    # Graph
+    clearButton = tk.Button(button_frame, text="Graph/Update",width=12, command=lambda: DisplayGraph())
+    clearButton.pack(side=tk.LEFT, padx=5)
+
     # clear
     clearButton = tk.Button(button_frame, text="Clear",width=12, command=lambda: clearOutput(output))
     clearButton.pack(side=tk.LEFT, padx=5)
@@ -47,9 +54,29 @@ def main():
     threading.Thread(target=handleConnections,args=(serverSocket,output), daemon=True).start()
     root.mainloop()
 
+def DisplayGraph():
+    global fig, ax
+
+    if fig == None or plt.fignum_exists(fig.number) == False:
+        fig, ax = plt.subplots()
+        plt.ion()
+        fig.show()
+
+    ax.clear()
+    y = serverData
+    x = np.linspace(1,100,len(serverData))
+
+    ax.axhline(y=median(serverData), color='r', linestyle='-',label="Median ("+str(median(serverData))+")")
+    ax.scatter(x, y, label='Data')
+    ax.set_title("Scatter Plot")
+    ax.set_xlabel("Ages")
+    ax.set_ylabel("Data")
+    ax.legend()
+
 #since ctrl+c wasn't working, this is a tkinker implementation :[
 def cleanExit(serverSocket,root):
     serverSocket.close()
+    plt.close()
     root.destroy()
 
 def clearOutput(output):
@@ -87,7 +114,8 @@ def handleConnections(serverSocket,output):
                 output.yview(tk.END)#autoscroll
 
             clientSocket.close()
-        except:
+        except Exception as e:
+            print(e)
             break
     print("Server Ended.")
 

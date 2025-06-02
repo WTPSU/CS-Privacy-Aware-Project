@@ -86,6 +86,8 @@
 
         Now onto the client, The basic idea is that raw data is given, noise is
         added using the Laplace mechanism as DP and is then sent to the server.
+        <br />
+        <br />
         We wanted the demo to be a bit interactive, so we let the client specify
         the epsilon value. After setting up the client socket, we ask for an
         epsilon value and loop for raw data input.
@@ -109,8 +111,11 @@
 
         Our sensitivy is 99 here because it's the maximum the data can change by
         (accounts for worst-case). Age is usually also a whole number so we
-        round the final result with int(). After adding noise, the data is sent
-        to the server and the server demo will update it's analysis;
+        round the final result with int().
+        <br />
+        <br />
+        After adding noise, the data is sent to the server and the server demo
+        will update it's analysis;
         <img
           src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
 6 Running Demo.png"
@@ -127,6 +132,25 @@
           alt="server log after 500+ runs"
         />
       </p>
+      <p>Here's some more tests, as scatter graphs,</p>
+      <ul>
+        <li>
+          The first test is done with epsilon 10, age 22+noise sent 200 times.
+        </li>
+        <li>
+          The 2nd test is done with epsilon 25, age 22+noise sent 200 times.
+        </li>
+      </ul>
+      <img
+        src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+9 e10 200x 22age.png"
+        alt="graphed result epsilon 10 ran 200 times with age 22"
+      />
+      <img
+        src="https://wtpsu.github.io/CS-Privacy-Aware-Project/images/
+10 e25 200x 22age.png"
+        alt="graphed result epsilon 25 ran 200 times with age 22"
+      />
     </section>
 
     <!-- showcase 2 section -->
