@@ -6,168 +6,258 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Priv. Aware Website Project</title>
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="website code.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <h1>Spreading Awareness for Local Differential Privacy (LDP)</h1>
-      <p>By Westley T and Hong</p>
-    </header>
+  <body class="bg-dark">
+    <!-- nav bar -->
+    <nav
+      id="navbar"
+      class="navbar navbar-dark navbar-expand-md bg-secondary mb-3"
+    >
+      <a
+        class="navbar-brand"
+        href="#"
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
+        title="a very useful button :)"
+        >LDP Awareness project</a
+      >
 
-    <!-- Intro section -->
-    <section>
-      <h2>Introduction</h2>
-      <p>
-        Differential privacy (DP) is a technique for preserving individual
-        privacy. It does this by adding controllable noise to the data so that
-        one person's data does not change the output significantly, making it
-        harder for attackers to gain information.
-        <br />
-        <br />
-        Central differential privacy is a type of DP that is already widely
-        used, its application is mostly on the server/host/creator side with raw
-        data. For example, after raw data is collected from clients, DP is
-        applied to ensure that the data is good and privacy-preserved for
-        internal and external use.
-        <br />
-        <br />
-        Local differential privacy (LDP) on the other hand, is less common. LDP
-        is applied on the client side before reaching the server, ensuring the
-        data given is "accurate" enough to be useful while also preserving some
-        privacy. For example, instead of the data being sent directly to the
-        server, noise is added before it does, ensuring that individual privacy
-        is preserved when it is used by a third party.
-        <br />
-        <br />
-        LDP could provide more privacy for everyone if it was adapted more.
-        Since it is applied on the client before data is sent to servers, no raw
-        data is collected by a 3rd party. When things like data-breaches happen,
-        individual privacy is preserved, and it will be harder for attackers to
-        isolate a single person's data. The trade-off for using LDP is accuracy,
-        but it might be worth it if everyone's privacy is preserved.
-        <br />
-        <br />
-        The goal of this website is to spread awareness towards LDP with a
-        detailed showcase with the hopes that it gets adapted more in practical
-        scenarios, leading to more privacy for everyone overall.
-        <br />
-        <br />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navBar"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        The showcase source(s) can be found and ran at our
-        <a href="https://github.com/WTPSU/CS-Privacy-Aware-Project">
-          repo on Github.
-        </a>
-      </p>
-    </section>
+      <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="#intro">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#showcase1">Showcase 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#showcase2">Showcase 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#conclusion">Conclusion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#feedback">Feedback Form</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main class="mx-auto text-light">
+      <!-- title -->
+      <header>
+        <h1>Spreading Awareness for Local Differential Privacy (LDP)</h1>
+        <p data-bs-toggle="tooltip" data-bs-placement="left" title="Hi.">
+          By Westley T and Hong
+        </p>
+      </header>
 
-    <!-- numbers showcase section -->
-    <section>
-      <h2>Showcase #1 - Laplace + Numbers</h2>
-      <p>
-        For the first showcase, we'll cover something simple. We start with raw
-        numbers, add noise to it, and then send it to the server for analysis.
-        We can pretend that we're working with a dataset of user's ages. Since
-        Age is a whole number and usually within range of 1-100, our simulated
-        data will use this fact:
-        <img
-          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/1 SimulatedData.png"
-          alt="Using a for loop to add random numbers from 1-99."
-        />
+      <!-- Intro section -->
+      <section class="border-top" id="intro">
+        <h2>Introduction</h2>
+        <p>
+          Differential privacy (DP) is a technique for preserving individual
+          privacy. It does this by adding controllable noise to the data so that
+          one person's data does not change the output significantly, making it
+          harder for attackers to gain information.
+          <br />
+          <br />
+          Central differential privacy is a type of DP that is already widely
+          used, its application is mostly on the server/host/creator side with
+          raw data. For example, after raw data is collected from clients, DP is
+          applied to ensure that the data is good and privacy-preserved for
+          internal and external use.
+          <br />
+          <br />
+          Local differential privacy (LDP) on the other hand, is less common.
+          LDP is applied on the client side before reaching the server, ensuring
+          the data given is "accurate" enough to be useful while also preserving
+          some privacy. For example, instead of the data being sent directly to
+          the server, noise is added before it does, ensuring that individual
+          privacy is preserved when it is used by a third party.
+          <br />
+          <br />
+          LDP could provide more privacy for everyone if it was adapted more.
+          Since it is applied on the client before data is sent to servers, no
+          raw data is collected by a 3rd party. When things like data-breaches
+          happen, individual privacy is preserved, and it will be harder for
+          attackers to isolate a single person's data. The trade-off for using
+          LDP is accuracy, but it might be worth it if everyone's privacy is
+          preserved.
+          <br />
+          <br />
+          The goal of this website is to spread awareness towards LDP with a
+          detailed showcase with the hopes that it gets adapted more in
+          practical scenarios, leading to more privacy for everyone overall.
+          <br />
+          <br />
 
-        Next we setup a simple socket for client/server communication and a
-        output window it's easier to tell what the server sees. When the server
-        receives data from the client, it'll output analysis data (Range,
-        Median, and Mode) on the dataset of numbers.
-        <img
-          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+          The showcase source(s) can be found and ran at our
+          <a
+            class="text-info"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/WTPSU/CS-Privacy-Aware-Project"
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            title="R.E.P.O"
+          >
+            repo on Github.
+          </a>
+        </p>
+      </section>
+
+      <!-- numbers showcase section -->
+      <section class="border-top" id="showcase1">
+        <h2>Showcase #1 - Laplace + Numbers</h2>
+        <p>
+          For the first showcase, we'll cover something simple. We start with
+          raw numbers, add noise to it, and then send it to the server for
+          analysis. We can pretend that we're working with a dataset of user's
+          ages. Since Age is a whole number and usually within range of 1-100,
+          our simulated data will use this fact:
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/1 SimulatedData.png"
+            class="border border-white"
+            alt="Using a for loop to add random numbers from 1-99."
+          />
+
+          Next we setup a simple socket for client/server communication and a
+          output window it's easier to tell what the server sees. When the
+          server receives data from the client, it'll output analysis data
+          (Range, Median, and Mode) on the dataset of numbers.
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 2 ServerOut.png"
-          alt="Server Output window"
-        />
+            class="border border-primary"
+            alt="Server Output window"
+          />
 
-        Now onto the client, The basic idea is that raw data is given, noise is
-        added using the Laplace mechanism as DP and is then sent to the server.
-        <br />
-        <br />
-        We wanted the demo to be a bit interactive, so we let the client specify
-        the epsilon value. After setting up the client socket, we ask for an
-        epsilon value and loop for raw data input.
-        <img
-          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+          Now onto the client, The basic idea is that raw data is given, noise
+          is added using the Laplace mechanism as DP and is then sent to the
+          server.
+          <br />
+          <br />
+          We wanted the demo to be a bit interactive, so we let the client
+          specify the epsilon value. After setting up the client socket, we ask
+          for an epsilon value and loop for raw data input.
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 3 Client CLI.png"
-          alt="CLI client with example numbers for epsilon and data"
-        />
+            class="border border-white"
+            alt="CLI client with example numbers for epsilon and data"
+          />
 
-        And here is the laplace function:
-        <img
-          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+          And here is the laplace function:
+
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 4 LaplaceCall.png"
-          alt="Laplace function call"
-        />
-        <img
-          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+            class="border border-white"
+            alt="Laplace function call"
+          />
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 5 LaplaceFunct.png"
-          alt="Laplace function body"
-        />
+            class="border border-white"
+            alt="Laplace function body"
+          />
 
-        Our sensitivy is 99 here because it's the maximum the data can change by
-        (accounts for worst-case). Age is usually also a whole number so we
-        round the final result with int().
-        <br />
-        <br />
-        After adding noise, the data is sent to the server and the server demo
-        will update it's analysis;
-        <img
-          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+          Our sensitivy is 99 here because it's the maximum the data can change
+          by (accounts for worst-case). Age is usually also a whole number so we
+          round the final result with int().
+          <br />
+          <br />
+          After adding noise, the data is sent to the server and the server demo
+          will update it's analysis;
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 6 Running Demo.png"
-          alt="client/server demo"
-        />
-
-        With enough data-points, the server will have a pretty accurate measure
-        of the shape and distribution of the data. As an example, here's the
-        result of running the same epsilon = 2 and data = 24 500+ times, It gets
-        closer to 24 with each new data-point;
+            class="border border-white"
+            alt="client/server demo"
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            title="pay attention now...."
+          />
+          In the above Image, The CLI interface represents the client, and the
+          white window is what the server sees.
+          <br />
+          <br />
+          With enough data-points, the server will have a pretty accurate
+          measure of the shape and distribution of the data. As an example,
+          here's the result of running the same epsilon = 2 and data = 24 500+
+          times, It gets closer to 24 with each new data-point;
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+7 Running e2 a24 500 times.png"
+            class="border border-primary"
+            alt="server log after 500+ runs"
+          />
+        </p>
+        <p>Here's some more tests, as scatter graphs,</p>
+        <ul>
+          <li>
+            The first test is done with epsilon 10, age 22+noise sent 200 times.
+          </li>
+          <li>
+            The 2nd test is done with epsilon 25, age 22+noise sent 200 times.
+          </li>
+        </ul>
         <img
           src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
-7 Running e2 a24 500 times.png"
-          alt="server log after 500+ runs"
-        />
-      </p>
-      <p>Here's some more tests, as scatter graphs,</p>
-      <ul>
-        <li>
-          The first test is done with epsilon 10, age 22+noise sent 200 times.
-        </li>
-        <li>
-          The 2nd test is done with epsilon 25, age 22+noise sent 200 times.
-        </li>
-      </ul>
-      <img
-        src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 9 e10 200x 22age.png"
-        alt="graphed result epsilon 10 ran 200 times with age 22"
-      />
-      <img
-        src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+          class="border border-primary"
+          alt="graphed result epsilon 10 ran 200 times with age 22"
+        />
+        <img
+          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 10 e25 200x 22age.png"
-        alt="graphed result epsilon 25 ran 200 times with age 22"
-      />
-    </section>
+          class="border border-primary"
+          alt="graphed result epsilon 25 ran 200 times with age 22"
+        />
+      </section>
 
-    <!-- showcase 2 section -->
-    <section>
-      <h2>Showcase #2 - WIP</h2>
-      <!-- <video width="643" height="472.5" controls>
+      <!-- showcase 2 section -->
+      <section class="border-top" id="showcase2">
+        <h2 data-bs-toggle="tooltip" data-bs-placement="right" title="Great.">
+          Showcase #2 - WIP (Demo Written by Hong.)
+        </h2>
+        <!-- <video width="643" height="472.5" controls>
         <source
           src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/Hong Demo.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
       </video> -->
-    </section>
+      </section>
 
-    <!-- showcase 2 section -->
-    <section>
-      <h2>Conclusion(?)</h2>
-    </section>
+      <!-- showcase 2 section -->
+      <section class="border-top" id="conclusion">
+        <h2>Conclusion(?)</h2>
+      </section>
+
+      <!-- Form -->
+      <form id="feedback">WIP FORM</form>
+    </main>
   </body>
 </html>

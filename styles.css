@@ -1,27 +1,15 @@
-header h1 {
-  margin-top: 0px;
-  margin-bottom: 0;
-}
-header p {
-  margin-top: 5px;
-}
-
-section {
-  width: 66%;
-}
-section h2 {
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-section p {
-  margin-bottom: 10px;
-  margin-top: 0;
+main {
+  width: 100%;
 }
 
 img {
   max-width: 66%;
   min-width: 300px;
   margin-bottom: 10px;
-  height: auto;
   display: block;
+}
+@media (min-width: 767.98px) {
+  main {
+    width: 75%;
+  }
 }
