@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DP Demo</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <select id="method">
+        <option value="laplace">Laplace</option>
+        <option value="gaussian">Gaussian</option>
+        <option value="exponential">Exponential</option>
+      </select>
+      <input id="epsilon" type="number" step="0.1" value="1.0" />
+      <input id="sensitivity" type="number" step="0.1" value="1.0" />
+
+      <input id="val" type="number" value="5000" />
+    <input id="point" type="number" value="50" />
+    <button onclick="add()">OutPut History</button>
+    <div>
+        <p>Noise Value: <span id="original"></span></p>
+        <p>Noise Value: <span id="after"></span></p>
+        <p>Noise Value: <span id="noise"></span></p>
+      </div>
+    <canvas id="numChart" width="400" height="200"></canvas>
+
+    <h2>Upload Image</h2>
+    <input type="file" id="imgInput" />
+    <button onclick="upload()">Apply DP</button>
+
+    <h2>Original Image</h2>
+    <img id="originalImage" src="" width="1000" />
+    <h2>Result</h2>
+    <img id="resultImg" src="" width="1000" />
+
+    <script>
+        const chart_type = document.getElementById('numChart').getContext('2d');
+        const chart = new Chart(chart_type, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+            label: 'After Value',
+            data: [],
+            borderColor: 'green',
+            borderWidth: 2
+            },
+            {
+        label: 'Original Value',
+        data: [],
+        borderColor: 'red',
+        borderWidth: 1,
+        fill: false,
+      }]
+        }
+        });
+
+        let count = 0;
+
+        async function add() {
+        const method = document.getElementById("method").value;
+        const epsilon = document.getElementById("epsilon").value;
+        const sensitivity = document.getElementById("sensitivity").value;
+        const point = document.getElementById("point").value;
+        const val = document.getElementById("val").value;
+
+        const res = await fetch(`http://127.0.0.1:8000/point?value=${val}&method=${method}&epsilon=${epsilon}&sensitivity=${sensitivity}&point=${point}`);
+
+        const data = await res.json();
+        count += 1;
+        chart.data.labels.push(count);
+        chart.data.datasets[0].data.push(data.after);
+        chart.data.datasets[1].data.push(parseFloat(val));
+        chart.update();
+        document.getElementById("after").innerText = data.after.toFixed(4);
+        document.getElementById("original").innerText = data.original.toFixed(4);
+        document.getElementById("noise").innerText = data.noise.toFixed(4);
+        }
+
+        async function upload() {
+        const fileInput = document.getElementById("imgInput");
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+        const epsilon = document.getElementById("epsilon").value;
+        const sensitivity = document.getElementById("sensitivity").value;
+
+        const original_image = URL.createObjectURL(file);
+        document.getElementById("originalImage").src = original_image;
+
+
+
+        const response = await fetch(`http://127.0.0.1:8000/upload?epsilon=${epsilon}&sensitivity=${sensitivity}`, {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await response.json();
+        document.getElementById("resultImg").src = "data:image/png;base64," + data.image_base64;
+        }
+    </script>
+
+    <!-- <script type="text/babel" src="app.js"></script> -->
+  </body>
+</html>
