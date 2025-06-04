@@ -252,12 +252,51 @@
       </section>
 
       <!-- showcase 2 section -->
-      <section class="border-top" id="conclusion">
+      <section class="border-top border-bottom pb-3" id="conclusion">
         <h2>Conclusion(?)</h2>
       </section>
 
       <!-- Form -->
-      <form id="feedback">WIP FORM</form>
+      <form
+        class="border border-3 border-success px-3 py-2 mt-2 mx-auto"
+        id="feedback"
+      >
+        <h2>Site Feedback Form</h2>
+        <p>Got any feedback?</p>
+
+        <div class="mb-3 form-group">
+          <label for="email" class="form-label"
+            >(Optional) Email (for replies maybe?):</label
+          >
+          <input type="email" class="form-control" id="email" />
+        </div>
+
+        <div class="mb-3 form-group">
+          <label for="name" class="form-label">Name or Username:</label>
+          <input required type="text" class="form-control" id="name" />
+        </div>
+
+        <div class="mb-3 form-group pb-2">
+          <label for="feedbacktext">Feedback:</label>
+          <textarea
+            required
+            class="form-control"
+            id="feedbacktext"
+            rows="5"
+          ></textarea>
+        </div>
+
+        <div class="d-flex justify-content-center gap-2">
+          <button
+            type="submit"
+            id="formSubmitButton"
+            class="btn btn-primary w-50"
+          >
+            Submit
+          </button>
+          <button type="reset" class="btn btn-secondary w-50">Reset</button>
+        </div>
+      </form>
     </main>
   </body>
 </html>
