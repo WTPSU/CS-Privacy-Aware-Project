@@ -21,7 +21,9 @@ form.addEventListener("submit", (e) => {
   fetch(webhookURL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content: `TEST FEEDBACK: ${feedback}` }),
+    body: JSON.stringify({
+      content: `"NEW FEEDBACK"\ncontact:${email.value}\nfrom: ${name.value}\nFeedback: ${feedback.value}`,
+    }),
   })
     .then(() => alert("Feedback sent!"))
     .catch((err) => alert("Error sending feedback."));
