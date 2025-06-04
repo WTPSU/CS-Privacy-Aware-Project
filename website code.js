@@ -8,6 +8,7 @@ tooltipTriggerList.forEach((el) => new bootstrap.Tooltip(el));
 let form = document.querySelector("#feedback");
 
 form.addEventListener("submit", (e) => {
+  e.preventDefault();
   const form = document.querySelector("#feedback");
   const email = form.querySelector("#email");
   const name = form.querySelector("#name");
