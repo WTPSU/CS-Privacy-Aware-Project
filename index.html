@@ -63,6 +63,8 @@
         </ul>
       </div>
     </nav>
+
+    <!-- Main -->
     <main class="mx-auto text-light">
       <!-- title -->
       <header>
@@ -127,7 +129,7 @@
         </p>
       </section>
 
-      <!-- numbers showcase section -->
+      <!-- numbers showcase 1 section -->
       <section class="border-top" id="showcase1">
         <h2>Showcase #1 - Laplace + Numbers</h2>
         <p>
@@ -141,7 +143,8 @@
             class="border border-white"
             alt="Using a for loop to add random numbers from 1-99."
           />
-
+        </p>
+        <p>
           Next we setup a simple socket for client/server communication and a
           output window it's easier to tell what the server sees. When the
           server receives data from the client, it'll output analysis data
@@ -152,7 +155,8 @@
             class="border border-primary"
             alt="Server Output window"
           />
-
+        </p>
+        <p>
           Now onto the client, The basic idea is that raw data is given, noise
           is added using the Laplace mechanism as DP and is then sent to the
           server.
@@ -167,7 +171,8 @@
             class="border border-white"
             alt="CLI client with example numbers for epsilon and data"
           />
-
+        </p>
+        <p>
           And here is the laplace function:
 
           <img
@@ -182,12 +187,11 @@
             class="border border-white"
             alt="Laplace function body"
           />
-
           Our sensitivy is 99 here because it's the maximum the data can change
           by (accounts for worst-case). Age is usually also a whole number so we
           round the final result with int().
-          <br />
-          <br />
+        </p>
+        <p>
           After adding noise, the data is sent to the server and the server demo
           will update it's analysis;
           <img
@@ -201,8 +205,8 @@
           />
           In the above Image, The CLI interface represents the client, and the
           white window is what the server sees.
-          <br />
-          <br />
+        </p>
+        <p>
           With enough data-points, the server will have a pretty accurate
           measure of the shape and distribution of the data. As an example,
           here's the result of running the same epsilon = 2 and data = 24 500+
@@ -214,6 +218,7 @@
             alt="server log after 500+ runs"
           />
         </p>
+
         <p>Here's some more tests, as scatter graphs,</p>
         <ul>
           <li>
@@ -240,19 +245,60 @@
       <!-- showcase 2 section -->
       <section class="border-top" id="showcase2">
         <h2 data-bs-toggle="tooltip" data-bs-placement="right" title="Great.">
-          Showcase #2 - WIP (Demo Written by Hong.)
+          Showcase #2 - Different mechanisms and Images (Demo program by Hong)
         </h2>
-        <!-- <video width="643" height="472.5" controls>
-        <source
-          src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/Hong Demo.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video> -->
+        <p>
+          For showcase 2, we have a simple webapp where we can specify from one
+          of three mechanisms, input an epsilon value, a sensitivity value, a
+          input value, and a point value. As the epsilon value increases the
+          noise generated becomes more accurate to the value input.
+          <br />
+          <br />
+          In the context of LDP, different mechanisms have different pros and
+          cons. But overall, accuracy is the trade-off compared to a centralized
+          implementation. For our example, Laplace and Gaussian is best for
+          numerical values and exponential is best for a smaller finite set.
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+11 Hong Numbers Demo.png"
+            class="border border-primary"
+            alt="Hong's demo with numbers."
+          />
+        </p>
+        <p>
+          This demo also includes adding noise to an image,
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+12 Hong image Original"
+            class="border border-primary"
+            alt="Webapp image demo"
+          />
+          <img
+            src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
+13 Hong image Noise"
+            class="border border-primary"
+            alt="Webapp image demo after noise added"
+          />
+          In the context of LDP, this noisy image would be sent to a server,
+          which then could be used for things like simple classification or
+          recognition, color distribution estimates, similarity comparison,
+          pattern matching, trends, training models and more.
+        </p>
+
+        <p>
+          And finally, here's a video of the demo;<br />
+          <video width="643" height="472.5" controls>
+            <source
+              src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/Hong Demo.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </p>
       </section>
 
-      <!-- showcase 2 section -->
-      <section class="border-top border-bottom pb-3" id="conclusion">
+      <!-- conclusion section (TODO: REMOVE D-NONE IF ADDING THIS SECTION) -->
+      <section class="border-top border-bottom pb-3 d-none" id="conclusion">
         <h2>Conclusion(?)</h2>
       </section>
 

@@ -22,7 +22,7 @@ form.addEventListener("submit", (e) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      content: `# NEW FEEDBACK\ncontact:${email.value}\nfrom: ${name.value}\nFeedback:\n\`\`\`${feedback.value}\`\`\``,
+      content: `## NEW FEEDBACK\ncontact:${email.value}\nfrom: ${name.value}\nFeedback:\n\`\`\`${feedback.value}\`\`\``,
     }),
   })
     .then(() => alert("Feedback sent!"))
