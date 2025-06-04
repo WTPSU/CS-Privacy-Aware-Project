@@ -249,9 +249,9 @@
         </h2>
         <p>
           For showcase 2, we have a simple webapp where we can specify from one
-          of three mechanisms, input an epsilon value, a sensitivity value, a
-          input value, and a point value. As the epsilon value increases the
-          noise generated becomes more accurate to the value input.
+          of three mechanisms; an epsilon value, a sensitivity value, a input
+          value, and a point value. As the epsilon value increases the noise
+          generated becomes more accurate to the value input.
           <br />
           <br />
           In the context of LDP, different mechanisms have different pros and
@@ -266,7 +266,7 @@
           />
         </p>
         <p>
-          This demo also includes adding noise to an image,
+          This demo also includes adding noise to an image;
           <img
             src="https://wtpsu.github.io/CS-Privacy-Aware-Project/media/
 12 Hong image Original.png"
@@ -282,10 +282,14 @@
           In the context of LDP, this noisy image would be sent to a server,
           which then could be used for things like simple classification or
           recognition, color distribution estimates, similarity comparison,
-          pattern matching, trends, training models and more.
+          pattern matching, trends, training models, and more.
         </p>
 
-        <p>
+        <p
+          data-bs-toggle="tooltip"
+          data-bs-placement="left"
+          title="...because why not?"
+        >
           And finally, here's a video of the demo;<br />
           <video width="643" height="472.5" controls>
             <source
@@ -297,9 +301,14 @@
         </p>
       </section>
 
-      <!-- conclusion section (TODO: REMOVE D-NONE IF ADDING THIS SECTION) -->
-      <section class="border-top border-bottom pb-3 d-none" id="conclusion">
-        <h2>Conclusion(?)</h2>
+      <!-- conclusion section -->
+      <section class="border-top border-bottom pb-3" id="conclusion">
+        <h2>Conclusion (WIP)</h2>
+        <p class="d-none">
+          <!-- remove d-none -->
+          TODO: insert something about LDP and the accuracy trade-off and why
+          its worth it
+        </p>
       </section>
 
       <!-- Form -->
@@ -308,7 +317,13 @@
         id="feedback"
       >
         <h2>Site Feedback Form</h2>
-        <p>Got any feedback?</p>
+        <p
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="probably will be disabled in a few weeks, it uses a discord webhook lol."
+        >
+          Got any feedback?
+        </p>
 
         <div class="mb-3 form-group">
           <label for="email" class="form-label"
