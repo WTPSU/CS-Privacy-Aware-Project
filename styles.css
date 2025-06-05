@@ -3,6 +3,9 @@ main {
   width: 100%;
 }
 
+p {
+  font-size: 18px;
+}
 img {
   max-width: 66%;
   min-width: 300px;
