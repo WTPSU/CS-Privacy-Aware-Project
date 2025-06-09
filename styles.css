@@ -3,6 +3,18 @@ main {
   width: 100%;
 }
 
+section {
+  transition: border-color 0.25s ease, background-color 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+section:hover {
+  border-style: none none none ridge;
+  border-color: green;
+  background-color: rgb(23, 27, 31);
+  padding-left: 7px;
+}
+
 p {
   font-size: 18px;
 }
